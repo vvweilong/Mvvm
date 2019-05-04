@@ -2,8 +2,6 @@ package com.yezao.mvvm;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,68 +11,34 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
-public class CoordinatActivity extends AppCompatActivity {
-    private final String TAG = getClass().getSimpleName();
-
+public class TabLayoutActivity extends AppCompatActivity {
+    private final String TAG=getClass().getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coordinat);
+        setContentView(R.layout.activity_tab_layout);
+        smartRefreshInit();
 
-
-        refreshInit();
-
-        recyclerViewInit();
-
-        appbarInit();
-
-//        tabLayoutInit();// 单个 tablayout
-
-        tabLayoutsInit();//两个tablayout
-    }
-
-    private void refreshInit() {
-        SmartRefreshLayout refreshLayout = findViewById(R.id.swipe_refresh_layout);
-        refreshLayout.setEnableRefresh(true);
-        refreshLayout.setEnableLoadmore(false);
-        refreshLayout.setOnLoadmoreListener(new OnRefreshLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshLayout.finishLoadmore(1000);
-            }
-
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshLayout.finishRefresh(1000);
-            }
-        });
-    }
-
-    private void recyclerViewInit() {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setAdapter(new RecyclerView.Adapter() {
             @Override
             public int getItemViewType(int position) {
-                return position % 5;
-//
-//                if (position % 5) {
-//                    return 1;
-//                } else if (position <= 40) {
-//                    return 2;
-//                } else if (position <= 60) {
-//                    return 3;
-//                } else if (position <= 80) {
-//                    return 4;
-//                } else {
-//                    return 5;
-//                }
+                if (position <= 20) {
+                    return 1;
+                } else if (position <= 40) {
+                    return 2;
+                } else if (position <= 60) {
+                    return 3;
+                } else if (position <= 80) {
+                    return 4;
+                } else {
+                    return 5;
+                }
             }
 
             @NonNull
@@ -160,9 +124,8 @@ public class CoordinatActivity extends AppCompatActivity {
                 switchAnimView.showTagView(tagContent, dy > 0);
             }
         });
-    }
 
-    private void appbarInit() {
+
         AppBarLayout appBarLayout = findViewById(R.id.appbar_layout);
 
         final int[] totalRange = {0};
@@ -173,59 +136,30 @@ public class CoordinatActivity extends AppCompatActivity {
                     totalRange[0] = appBarLayout.getTotalScrollRange();
                     return;
                 }
+
                 if (Math.abs(offset) == 0) {//展开到最大了
-                    showTabAnim();
+                    // TODO: 2019/5/3 展开 二层tablayout
                 } else if (Math.abs(offset) == totalRange[0]) {//折叠到最小
-                    hideTabAnim();
+                    // TODO: 2019/5/3 隐藏 二层tablayout
                 }
             }
         });
     }
 
-    private void hideTabAnim() {
-//        for (int i = 0; i < tabLayout.getTabCount(); i++) {
-//            ((CustomTabItem) tabLayout.getTabAt(i).getCustomView()).hideDescribe();
-//        }
-//
-        if (multiTabLayoutView != null) {
-            multiTabLayoutView.hideDescribe();
-        }
+    private void smartRefreshInit() {
+        SmartRefreshLayout refreshLayout = findViewById(R.id.swipe_refresh_layout);
+        refreshLayout.setEnableRefresh(true);
+        refreshLayout.setEnableLoadmore(false);
+        refreshLayout.setOnLoadmoreListener(new OnRefreshLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshLayout.finishLoadmore(1000);
+            }
+
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshLayout.finishRefresh(1000);
+            }
+        });
     }
-
-    private void showTabAnim() {
-//        if (tabLayout != null) {
-//            for (int i = 0; i < tabLayout.getTabCount(); i++) {
-//                ((CustomTabItem) tabLayout.getTabAt(i).getCustomView()).showDescribe();
-//            }
-//        }
-        if (multiTabLayoutView != null) {
-            multiTabLayoutView.showDescribe();
-        }
-    }
-
-    TabLayout tabLayout;
-
-    private void tabLayoutInit() {
-        tabLayout = findViewById(R.id.multitab_tablayout);
-        for (int i = 0; i < 4; i++) {
-            CustomTabItem customTabItem = new CustomTabItem(tabLayout.getContext());
-            tabLayout.addTab(tabLayout.newTab().setCustomView(customTabItem));
-            customTabItem.setTabText("第" + i + "个TAB");
-            customTabItem.setDescribeText("tab 描述文字");
-        }
-    }
-
-    private MultiTabLayoutView multiTabLayoutView;
-
-    private void tabLayoutsInit() {
-        multiTabLayoutView = findViewById(R.id.multi_tablayout_view);
-
-        String[] mainTabs = {"第一个", "第二个", "第三个", "第四个"};
-        String[] describeTabs = {"第一描述", "第二描述", "第三描述", "第四描述"};
-        multiTabLayoutView.setmainTabs(mainTabs);
-        multiTabLayoutView.setDescribeTabs(describeTabs);
-
-    }
-
-
 }

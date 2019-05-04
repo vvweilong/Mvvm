@@ -77,32 +77,11 @@
                             android:layout_gravity="bottom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
-                            <android.support.design.widget.TabLayout
-                                    android:background="@color/colorAccent"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-
-                                <android.support.design.widget.TabItem
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="1"/>
-
-                                <android.support.design.widget.TabItem
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="2"/>
-
-                                <android.support.design.widget.TabItem
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="3"/>
-
-                                <android.support.design.widget.TabItem
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="4"/>
-
-                            </android.support.design.widget.TabLayout>
+                            <!--<include layout="@layout/multitab_layout"/>-->
+                        <com.yezao.mvvm.MultiTabLayoutView
+                                android:id="@+id/multi_tablayout_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
                             <com.yezao.mvvm.SwitchAnimView
 
                                     android:id="@+id/swipe_anim_layout"
