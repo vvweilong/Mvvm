@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:background="@color/colorPrimaryDark"
+                                             android:layout_height="wrap_content">
+
+    <ImageView
+            android:id="@+id/colose_btn"
+            android:src="@android:drawable/ic_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"/>
+
+    <TextView
+            android:text="筛选条件"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/colose_btn"
+            app:layout_constraintTop_toTopOf="@+id/colose_btn"/>
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/linearlayout_container"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/filter_ensure_btn"/>
+
+    <TextView
+            android:text="确定"
+            android:gravity="center"
+            android:id="@+id/filter_ensure_btn"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            app:layout_constraintEnd_toStartOf="@+id/filter_reset_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    <TextView
+            android:text="重置"
+            android:gravity="center"
+            android:id="@+id/filter_reset_btn"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/filter_ensure_btn"
+            />
+</android.support.constraint.ConstraintLayout>
