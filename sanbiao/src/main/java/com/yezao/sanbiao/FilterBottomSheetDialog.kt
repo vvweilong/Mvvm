@@ -37,6 +37,11 @@ class FilterBottomSheetDialog(context: Context) : BottomSheetDialog(context) {
     }
 
 
-    open class FilterItem(var title: String, var items: ArrayList<String>)
+    open class FilterItem(var title: String, var items: ArrayList<FilterItemView.ItemValueInterface>)
+    open class FilterChose(var value:String,var name:String):FilterItemView.ItemValueInterface{
+        override fun getItemText(): String {
+            return name
+        }
 
+    }
 }
