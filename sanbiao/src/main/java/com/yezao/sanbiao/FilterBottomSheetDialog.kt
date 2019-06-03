@@ -16,7 +16,7 @@ class FilterBottomSheetDialog(context: Context) : BottomSheetDialog(context) {
     init {
         setContentView(R.layout.filter_layout)
         titleTextView = findViewById<TextView>(R.id.title_tv)
-        filterItemContainer = findViewById(R.id.linearlayout_container)
+//        filterItemContainer = findViewById(R.id.linearlayout_container)
         setCanceledOnTouchOutside(false)
     }
 

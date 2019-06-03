@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     open fun show(v:View){
        val dialog= FilterDialogFragment()
 
-        val filterItemList = ArrayList<FilterBottomSheetDialog.FilterItem>()
 
 
 

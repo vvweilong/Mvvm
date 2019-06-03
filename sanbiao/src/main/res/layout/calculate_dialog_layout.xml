@@ -6,6 +6,15 @@
                                              android:background="@color/colorPrimaryDark"
                                              android:layout_height="wrap_content">
 
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/frameLayout"></FrameLayout>
+
     <ImageView
             android:id="@+id/colose_btn"
             android:src="@android:drawable/ic_delete"
@@ -21,21 +30,52 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/colose_btn"
-            app:layout_constraintTop_toTopOf="@+id/colose_btn"/>
+            app:layout_constraintTop_toTopOf="@+id/colose_btn"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/plan_title"/>
+
+    <TextView
+            android:textSize="12sp"
+            android:text="等额本息"
+            android:id="@+id/plan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintBottom_toBottomOf="@+id/colose_btn"/>
+
+    <com.yezao.sanbiao.NumberKeyPadView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/describe_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/plan_title"/>
 
 
-    <RecyclerView
-            android:orientation="vertical"
-            android:id="@+id/choose_recyclerview"
+
+    <TextView
+            android:gravity="center"
+            android:text="每期回款额均已扣除撮合服务费 \n若借款人提前还款，您的预期收益会减少"
+            android:id="@+id/describe_tv"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            app:layout_constraintBottom_toTopOf="@+id/filter_ensure_btn"
-            app:layout_constraintTop_toBottomOf="@+id/colose_btn"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/filter_reset_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
 
     <TextView
             android:text="确定"
