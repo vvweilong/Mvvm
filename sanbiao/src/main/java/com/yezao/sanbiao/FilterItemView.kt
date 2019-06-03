@@ -43,6 +43,19 @@ class FilterItemView @JvmOverloads constructor(
         addView(itemContainer, itemContainerParams)
         itemContainer.orientation = HORIZONTAL
         itemContainer.columnCount = 4
+        itemContainer.useDefaultMargins=true
+
+        itemSelectorRes = R.drawable.item_choose_bg
+        itemTextColorsRes = R.color.colors
+
+
+        setItemData( arrayListOf(
+            FilterBottomSheetDialog.FilterChose("1", "1"),
+//            FilterBottomSheetDialog.FilterChose("2", "2"),
+//            FilterBottomSheetDialog.FilterChose("3", "3"),
+//            FilterBottomSheetDialog.FilterChose("4", "4"),
+            FilterBottomSheetDialog.FilterChose("5", "5")
+        ))
     }
 
     open fun setTitle(title: String) {
@@ -78,13 +91,14 @@ class FilterItemView @JvmOverloads constructor(
     }
 
 
-    open fun addItem(itemStr: String) {
+     fun addItem(itemStr: String) {
         val item = TextView(context)
         item.setOnClickListener(this)
         item.text = itemStr
+        item.setBackgroundResource(itemSelectorRes)
         val itemParams = GridLayout.LayoutParams()
-        itemParams.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1, 1F)
-        itemParams.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1, 1f)
+        itemParams.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1,1f)
+        itemParams.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1)
         itemParams.setGravity(Gravity.CENTER)
 
         //确定 行 列

@@ -21,14 +21,7 @@ class MainActivity : AppCompatActivity() {
         val filterItemList = ArrayList<FilterBottomSheetDialog.FilterItem>()
 
 
-        for (i in 0 until 10){
-            val filterItem =
-                FilterBottomSheetDialog.FilterItem("title $i", arrayListOf("1", "1", "1", "1", "1", "1", "1", "1"))
-            filterItemList.add(filterItem)
-        }
 
-
-        dialog.setFilterItems(filterItemList)
 
         dialog.show(supportFragmentManager,"tag")
     }
